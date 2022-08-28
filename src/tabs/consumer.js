@@ -27,13 +27,14 @@ const Consumer = () => {
     let data_ = MEDS.filter((v, k) => v.medId == id);
     console.log(data_[0]);
     setScan((prev) => prev = data_[0]);
-    setData( prev => prev =  null );
+    setData(prev => prev = null);
   }
 
 
   // close scan
   const closeScan = () => {
     setData(prev => prev = "");
+    setScan(prev => prev = null );
     setIsScan(prev => prev = false);
   }
 
@@ -50,8 +51,10 @@ const Consumer = () => {
     <div className="manu" >
 
       {/* scan button */}
-      <div >
-        <button onClick={() => setIsScan(prev => prev = !isScan)} >
+      <div className="scanMedBtn" >
+        <button
+          style={{padding:".5em",fontSize:"1.5em",letterSpacing:"1px",cursor:"pointer"}} 
+          onClick={() => setIsScan(prev => prev = !isScan)} >
           Scan Medicine
         </button>
       </div>
@@ -59,7 +62,7 @@ const Consumer = () => {
 
 
       <div>
-        <div className="referralSection">
+        <div className="referralSection" style={{textAlign:"center"}} >
           {/* Consumer message */}
           <div className="">
             <h1 style={{ color: "#830a5a", height: "auto", fontSize: "4em", justifyContent: "center" }}>Validate and Gain Points!
@@ -74,12 +77,13 @@ const Consumer = () => {
       </div>
 
 
-
       {
         isScan && <div className="qrcodeWrapper">
 
           <div className="closePopUp" >
-            <button onClick={() => closeScan()} >Close</button>
+            <button
+              style={{padding:".5em",fontSize:"1.5em",letterSpacing:"1px",cursor:"pointer",margin:"1em"}} 
+              onClick={() => closeScan()} >Close</button>
           </div>
           {/* qr code start starts here */}
           <div className="qrcodeContainer" >
@@ -93,7 +97,7 @@ const Consumer = () => {
                 console.info(error);
               }
             }}
-              style={{ width: "100%", }}
+              style={{width: "100%" }}
             />
             {
               data && <p style={{ backgroundColor: "yellow", padding: "1em" }} >
@@ -101,7 +105,8 @@ const Consumer = () => {
               </p>
             }
 
-            <div className="scanResult" >
+            <div className={"scanResult"}
+              style={{ backgroundColor: scan?.Verified == "1" ? "green" : "red" }} >
               {
                 scan && <>
                   <p>{scan?.name}</p>
@@ -110,12 +115,10 @@ const Consumer = () => {
                   <p>{scan?.information}</p>
                   <p>{scan?.sleepy}</p>
                   <p>{scan?.SAHPRA}</p>
+                  <p>{scan?.side_effect}</p>
                 </>
               }
             </div>
-
-
-
           </div>
           {/* qr code ends here */}
         </div>
@@ -128,12 +131,7 @@ const Consumer = () => {
         {
           tab === 1 ? (
 
-            <div className="" >
-
-
-              {/* <input onChange={(e)=> setMedicine({...medicine, name:e.target.value }) }
-                    placeholder="Medicine ID" className="input_" /> */}
-
+            <div className="inputMedsId" >
               <input onChange={(e) => setMedicine({ ...medicine, MedicineName: e.target.value })}
                 placeholder="Medicine ID" className="input_" />
               <br />
