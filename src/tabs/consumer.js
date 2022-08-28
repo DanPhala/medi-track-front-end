@@ -1,70 +1,166 @@
-import React, {useState,useContext} from "react";
+import React, { useState, useContext, useEffect } from "react";
 import profile from '../tabs/profilePicture.png'
 import '../App.css';
+import { QrReader } from 'react-qr-reader';
+// import fake data, that mirrors real data..
+import MEDS from "./blockchainDummyData.json";
+
+
 
 const Consumer = () => {
 
-  const [medicine, setMedicine ] = useState({});
-  const [ tab, setTab ] = useState(1);
-  const [ data, setData ] = useState();
-  
-    //Adding method.
-    const add = () => {};
-  
-  
-      return (
-        <div className="manu" >
+  const [medicine, setMedicine] = useState({});
+  const [tab, setTab] = useState(1);
+  const [data, setData] = useState(null);
+  const [value, setValue] = useState("no data..");
+  const [isScan, setIsScan] = useState(false);
+  const [scan, setScan] = useState(null);
+
+
+
+  //Adding method.
+  const add = () => { };
+
+
+  // filter data 
+  const _filter = (id) => {
+    let data_ = MEDS.filter((v, k) => v.medId == id);
+    console.log(data_[0]);
+    setScan((prev) => prev = data_[0]);
+    setData( prev => prev =  null );
+  }
+
+
+  // close scan
+  const closeScan = () => {
+    setData(prev => prev = "");
+    setIsScan(prev => prev = false);
+  }
+
+
+  // runs when documents is ready.
+  useEffect(() => {
+    //
+    // console.log( MEDS );
+  }, [])
+
+
+
+  return (
+    <div className="manu" >
+
+      {/* scan button */}
+      <div >
+        <button onClick={() => setIsScan(prev => prev = !isScan)} >
+          Scan Medicine
+        </button>
+      </div>
+      {/* end scan button */}
+
+
+      <div>
+        <div className="referralSection">
+          {/* Consumer message */}
+          <div className="">
+            <h1 style={{ color: "#830a5a", height: "auto", fontSize: "4em", justifyContent: "center" }}>Validate and Gain Points!
+            </h1>
+          </div>
           <div>
-            
-        
-          <div className="referralSection">
-                   {/* Consumer message */}
-                   <div className="">
-                    <h1  style={{color: "#830a5a" ,height: "auto", fontSize: "4em", justifyContent: "center"}}>Validate and Gain Points! 
-                      </h1>
-                  </div>
-                  <div>
-                  <iframe src="https://giphy.com/embed/67ThRZlYBvibtdF9JH" width="250" height="auto" frameBorder="0" class="giphy-embed" justifyContent="center">
-                    </iframe>
-                  </div>
-                  <br/><br/>
-                </div>
+            <iframe src="https://giphy.com/embed/67ThRZlYBvibtdF9JH" width="250" height="auto" frameBorder="0" class="giphy-embed" justifyContent="center">
+            </iframe>
           </div>
-          
-          <div className="manuTabs" >
-          </div>
-          <div >
-            {
-              tab === 1 ? (
-              
-                <div className="" >
-          
-                 
-                   {/* <input onChange={(e)=> setMedicine({...medicine, name:e.target.value }) }
-                    placeholder="Medicine ID" className="input_" /> */}
-                    
-                  <input onChange={(e)=> setMedicine({...medicine, MedicineName:e.target.value }) }
-                    placeholder="Medicine ID" className="input_" />
-                    <br/>
-                  <button className="addBtn" onClick={() => add() } >
-                    Validate
-                  </button>
-  
-                </div>
-              ) :
-              tab === 2 ? (
-                data && data.map((val, key) => (
-                  <div className="manuData" >
-                    data -- value
-                  </div>
-                ))
-              ) :
-              tab === 3 ? "Track Data" :
-              "Wrong Tab"
-            }
-          </div>
+          <br /><br />
         </div>
-      )
+      </div>
+
+
+
+      {
+        isScan && <div className="qrcodeWrapper">
+
+          <div className="closePopUp" >
+            <button onClick={() => closeScan()} >Close</button>
+          </div>
+          {/* qr code start starts here */}
+          <div className="qrcodeContainer" >
+
+            <QrReader onResult={(result, error) => {
+              if (!!result) {
+                setData(prev => prev = result?.text);
+              }
+
+              if (!!error) {
+                console.info(error);
+              }
+            }}
+              style={{ width: "100%", }}
+            />
+            {
+              data && <p style={{ backgroundColor: "yellow", padding: "1em" }} >
+                {data} {_filter(data)}
+              </p>
+            }
+
+            <div className="scanResult" >
+              {
+                scan && <>
+                  <p>{scan?.name}</p>
+                  <p>{scan?.expiry_date}</p>
+                  <p>{scan?.made_by}</p>
+                  <p>{scan?.information}</p>
+                  <p>{scan?.sleepy}</p>
+                  <p>{scan?.SAHPRA}</p>
+                </>
+              }
+            </div>
+
+
+
+          </div>
+          {/* qr code ends here */}
+        </div>
+      }
+
+
+
+
+      <div >
+        {
+          tab === 1 ? (
+
+            <div className="" >
+
+
+              {/* <input onChange={(e)=> setMedicine({...medicine, name:e.target.value }) }
+                    placeholder="Medicine ID" className="input_" /> */}
+
+              <input onChange={(e) => setMedicine({ ...medicine, MedicineName: e.target.value })}
+                placeholder="Medicine ID" className="input_" />
+              <br />
+              <button className="addBtn" onClick={() => add()} >
+                Validate
+              </button>
+
+            </div>
+          ) :
+            tab === 2 ? (
+              data && data.map((val, key) => (
+                <div className="manuData" >
+                  data -- value
+                </div>
+              ))
+            ) :
+              tab === 3 ? "Track Data" :
+                "Wrong Tab"
+        }
+      </div>
+
+
+
+    </div>
+
+
+  )
 }
 
 export default Consumer;

@@ -1,0 +1,28 @@
+[{
+    "medId": "123456789panado",
+    "name": "panado",
+    "expiry_date": "11,22,334",
+    "side_effect": "blah blah",
+    "information": "pains,",
+    "made_by": "dischem",
+    "approve_by": "SAHPRA",
+    "Verified": "1"
+}, {
+    "medId": "iugytv85yo#2374diabetes",
+    "name": "metformin",
+    "expiry_date": "11,22,334",
+    "side_effect": "sleepy",
+    "information": "helps with blood ,",
+    "made_by": "clicks",
+    "approve_by": "SAHPRA",
+    "Verified": "1"
+}, {
+    "medId": "498tyn54y9843arv",
+    "name": "antiretroviral",
+    "expiry_date": "11,22,334",
+    "side_effect": "blah blah",
+    "information": "pains,",
+    "made_by": "pfizer",
+    "approve_by": "SAHPRA",
+    "Verified": "0"
+}]

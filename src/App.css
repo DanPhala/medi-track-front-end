@@ -58,6 +58,7 @@
 
 /* main section */
 
+
 /* .App .main {
     background-color: rgb(153, 55, 155); 
 } */
@@ -67,7 +68,6 @@
 
 
 /* manufacturer component */
- 
 
 .manu .addMeds {
     display: flex;
@@ -79,8 +79,6 @@
     padding-right: 10px;
     margin-top: 5em;
 }
-
-
 
 .manu .input_ {
     margin-top: 5px;
@@ -95,7 +93,7 @@
 
 .manu .addBtn {
     background-color: rgb(184, 69, 173);
-    color:white;
+    color: white;
     margin-top: 5px;
     margin-bottom: 5px;
     padding: 10px;
@@ -105,9 +103,7 @@
     cursor: pointer;
     font-weight: bold;
     width: 30em;
-    
 }
-
 
 .manu .manuTabs {
     /* background-color: red; */
@@ -117,7 +113,7 @@
 }
 
 .manu .manuTab {
-    color:white;
+    color: white;
     background-color: rgb(184, 69, 173);
     padding: 5px;
     padding-right: 10px;
@@ -136,4 +132,45 @@
     background-color: white;
 }
 
+.manu .qrcodeContainer {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 5em;
+    /* background-color: purple; */
+    height: 94vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1em;
+}
 
+.manu .qrcode {
+    width: 100%;
+    height: 10em;
+}
+
+.manu .qrcodeWrapper {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, .8);
+    background-color: rgba(137, 111, 96, 0.8);
+}
+
+.manu .closePopUp {
+    background-color: purple;
+    align-items: flex-end;
+    display: flex;
+    justify-content: right;
+}
+
+.manu .scanResult {
+    background-color: yellow;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+
+/*  */
