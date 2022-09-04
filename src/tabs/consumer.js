@@ -34,7 +34,7 @@ const Consumer = () => {
   // close scan
   const closeScan = () => {
     setData(prev => prev = "");
-    setScan(prev => prev = null );
+    setScan(prev => prev = null);
     setIsScan(prev => prev = false);
   }
 
@@ -53,7 +53,7 @@ const Consumer = () => {
       {/* scan button */}
       <div className="scanMedBtn" >
         <button
-          style={{padding:".5em",fontSize:"1.5em",letterSpacing:"1px",cursor:"pointer"}} 
+          style={{ padding: ".5em", fontSize: "1.5em", letterSpacing: "1px", cursor: "pointer" }}
           onClick={() => setIsScan(prev => prev = !isScan)} >
           Scan Medicine
         </button>
@@ -62,7 +62,7 @@ const Consumer = () => {
 
 
       <div>
-        <div className="referralSection" style={{textAlign:"center"}} >
+        <div className="referralSection" style={{ textAlign: "center" }} >
           {/* Consumer message */}
           <div className="">
             <h1 style={{ color: "#830a5a", height: "auto", fontSize: "4em", justifyContent: "center" }}>Validate and Gain Points!
@@ -82,7 +82,7 @@ const Consumer = () => {
 
           <div className="closePopUp" >
             <button
-              style={{padding:".5em",fontSize:"1.5em",letterSpacing:"1px",cursor:"pointer",margin:"1em"}} 
+              style={{ padding: ".5em", fontSize: "1.5em", letterSpacing: "1px", cursor: "pointer", margin: "1em" }}
               onClick={() => closeScan()} >Close</button>
           </div>
           {/* qr code start starts here */}
@@ -97,8 +97,7 @@ const Consumer = () => {
                 console.info(error);
               }
             }}
-              style={{width: "100%" }}
-            />
+              style={{ width: "100%" }} />
             {
               data && <p style={{ backgroundColor: "yellow", padding: "1em" }} >
                 {data} {_filter(data)}
@@ -109,13 +108,12 @@ const Consumer = () => {
               style={{ backgroundColor: scan?.Verified == "1" ? "green" : "red" }} >
               {
                 scan && <>
-                  <p>{scan?.name}</p>
-                  <p>{scan?.expiry_date}</p>
-                  <p>{scan?.made_by}</p>
-                  <p>{scan?.information}</p>
-                  <p>{scan?.sleepy}</p>
-                  <p>{scan?.SAHPRA}</p>
-                  <p>{scan?.side_effect}</p>
+                  <p>Name: {scan?.name}</p>
+                  <p>Ex Date: {scan?.expiry_date}</p>
+                  <p>Made By: {scan?.made_by}</p>
+                  <p>Infor: {scan?.information}</p>
+                  <p>Approve: {scan?.approve_by}</p>
+                  <p>Side Effect: {scan?.side_effect}</p>
                 </>
               }
             </div>

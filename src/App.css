@@ -1,41 +1,23 @@
 .App {
     /* text-align: center; */
-    min-height: 100vh;
+    /* min-height: 100vh; */
     background-color: white;
+    overflow: hidden;
 }
 
-.App .header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
+.App .addMedBtn {
+    background-color: rgb(91, 6, 63);
+    border: 0;
+    width: 100%;
+    padding: .5em 1em;
     color: white;
-    padding-top: .5em;
-    padding-bottom: .5em;
-    /* background-color: yellow; */
+    font-size: 1em;
+    border-radius: .3em;
+    cursor: pointer;
 }
 
-.App .title {
-    font-size: 40px;
-    width: 20%;
-    display: flex;
-    justify-content: right;
+.App .addMedBtn {
     background-color: rgb(131, 10, 90);
-    /* align-self: center; */
-    text-align: right;
-    padding-right: .5em;
-}
-
-.App .tabs {
-    background-color: rgb(131, 10, 90);
-    /* background-color: red; */
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: 80%;
-    padding-top: 8px;
-    padding-bottom: 9px;
 }
 
 .App .tab {
@@ -50,7 +32,7 @@
 }
 
 .App .tab:hover {
-    background-color: rgb(91, 6, 63);
+    background-color: rgb(131, 10, 90);
     border-radius: 5px;
     color: white;
 }
@@ -74,10 +56,12 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    background-color: white;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 5em;
+    /* background-color: yellow; */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    width: 80%;
+    text-align: center;
 }
 
 .manu .input_ {
@@ -133,38 +117,30 @@
     background-color: white;
 }
 
-.manu .qrcodeContainer {
-    width: 30%;
-    margin-left: auto;
-    margin-right: auto;
-    height: 5em;
-    /* background-color: purple; */
-    height: 94vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 1em;
-}
-
 .manu .qrcode {
     width: 100%;
     height: 10em;
 }
 
-.manu .qrcodeWrapper {
+.qrcodeWrapper {
     position: absolute;
     top: 0;
-    width: 100%;
-    height: 100vh;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    width: 95%;
     background-color: rgba(0, 0, 0, .7);
-    /* background-color: rgba(137, 111, 96, 0.8); */
 }
 
-.manu .closePopUp {
+.closePopUp {
     /* background-color: purple; */
     align-items: flex-end;
     display: flex;
     justify-content: right;
+}
+
+.manufacturerData {
+    background-color: yellow;
 }
 
 .manu .scanResult {
@@ -191,10 +167,36 @@
     margin-left: auto;
 }
 
-.manu .scanMedBtn {
+.scanMedBtns {
     margin-right: auto;
     margin-left: auto;
-    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+/* meds */
+
+.medsContainer {
+    background-color: inherit;
+    margin-top: 1.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.medicine {
+    background-color: rgb(184, 69, 173);
+    padding: .5em;
+    margin-bottom: .5em;
+    border-radius: .4em;
+}
+
+.medName {
+    font-weight: bold;
+    color: white;
+    font-size: 1.2em;
+    letter-spacing: .05em;
+    text-transform: capitalize;
 }
 
 
