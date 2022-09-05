@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import '../App.css';
-import QRCode from "react-qr-code";
+// import QRCode from "react-qr-code";
 import { QrReader } from 'react-qr-reader';
 import MEDS from "./blockchainDummyData.json";
 
@@ -33,7 +33,6 @@ const Manu = () => {
   const [medicine, setMedicine] = useState({});
   const [tab, setTab] = useState(1);
   const [data, setData] = useState();
-  const [value, setValue] = useState("no data..");
   const [isScan, setIsScan] = useState(false);
   const [scan, setScan] = useState(null);
   const [Meds, setMeds] = useState(MEDS);
@@ -44,8 +43,8 @@ const Manu = () => {
   // add new data to the blockchain
   const add = () => {
     let fil = data_.filter((v,k) => v?.medId === data )[0];
-    let d = Meds.push( fil )
-    console.log( Meds );
+    Meds.push( fil );
+    // console.log( Meds );
     setData(prev => prev = null);
     alert("Medicine Added");
 
@@ -82,27 +81,27 @@ const Manu = () => {
 
 
   // start function for getting all data
-  const getData = async () => {
+  // const getData = async () => {
 
-    var requestOptions = {
-      method: 'GET',
-      redirect: 'follow',
-      headers: {
-        "Accept": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "*",
-        "Access-Control-Allow-Methods": 'POST, PUT, DELETE, GET, OPTIONS',
-      }
-    };
+  //   var requestOptions = {
+  //     method: 'GET',
+  //     redirect: 'follow',
+  //     headers: {
+  //       "Accept": "application/json",
+  //       "Access-Control-Allow-Origin": "*",
+  //       "Access-Control-Allow-Headers": "*",
+  //       "Access-Control-Allow-Methods": 'POST, PUT, DELETE, GET, OPTIONS',
+  //     }
+  //   };
 
-    await fetch("http://127.0.0.1:5000/showall", requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        setData(prev => prev = result['chain']);
-        console.log(result['chain']);
-      })
-      .catch(error => console.log('error', error));
-  }
+  //   await fetch("http://127.0.0.1:5000/showall", requestOptions)
+  //     .then(response => response.json())
+  //     .then(result => {
+  //       setData(prev => prev = result['chain']);
+  //       console.log(result['chain']);
+  //     })
+  //     .catch(error => console.log('error', error));
+  // }
   // end function for getting data.
 
 
@@ -120,6 +119,8 @@ const Manu = () => {
   useEffect(() => {
     // get all data
     // getData();
+    setMeds( prev => prev = MEDS );
+    setData_ ( prev => prev = DATA );
   }, [])
 
   return (

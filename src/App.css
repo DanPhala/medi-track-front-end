@@ -5,6 +5,10 @@
     overflow: hidden;
 }
 
+button {
+    cursor: pointer;
+}
+
 .App .addMedBtn {
     background-color: rgb(91, 6, 63);
     border: 0;
@@ -24,6 +28,7 @@
     background-color: rgb(131, 10, 90);
     color: white;
     padding-bottom: 5px;
+    padding-top: 5px;
     padding-right: 10px;
     padding-left: 10px;
     text-align: center;
@@ -35,6 +40,14 @@
     background-color: rgb(131, 10, 90);
     border-radius: 5px;
     color: white;
+}
+
+
+/* CONSUMER */
+
+.consumer .pointsMsg {
+    color: #000;
+    font-size: 3em;
 }
 
 
@@ -201,3 +214,46 @@
 
 
 /*  */
+
+
+/* CONSUMER PAGE */
+
+.App .consumer .inputMedsId {
+    /* background-color: yellow; */
+    text-align: center;
+    align-items: center;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input_ {
+    width: 96%;
+    padding-left: .5em;
+    padding-bottom: .5em;
+    padding-top: .5em;
+    border: .1em solid rgb(210, 26, 189);
+    ;
+}
+
+.input_:active,
+.input_:hover,
+.input_:focus {
+    border: .1em solid rgb(210, 26, 189);
+}
+
+.validateBtn {
+    background-color: #780558;
+    color: #fff;
+    width: 100%;
+    border: 0;
+    padding-bottom: .5em;
+    padding-top: .5em;
+    margin-top: 1em;
+    font-size: 1.1em;
+    border-radius: .3em;
+}
+
+.validateBtn:hover {
+    background-color: rgb(210, 26, 189);
+}
